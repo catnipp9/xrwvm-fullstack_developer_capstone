@@ -30,8 +30,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost',
-    '127.0.0.1',
-    '.proxy.cognitiveclass.ai', # This allows any subdomain from the lab environment
+    'hadjirasulja-8000.theianext-1-labs-prod-misc-tools-us-east-0'
+    '.proxy.cognitiveclass.ai'
 ]
 CSRF_TRUSTED_ORIGINS = [
     'https://*.proxy.cognitiveclass.ai',
