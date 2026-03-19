@@ -1,68 +1,75 @@
 <html>
 <head>
-  <!-- Link the style sheet here -->
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="/static/bootstrap.min.css">
+  <title>About Us | Best Cars Dealership</title>
 </head>
-<div>
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:darkturquoise; height: 1in;">
-    <div class="container-fluid">
-      <h2 style="padding-right: 5%;">Dealerships</h2>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" style="font-size: larger;" aria-current="page" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" style="font-size: larger;" href="/about">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" style="font-size: larger;" href="/contact">Contact Us</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  
-    <div class="card" style="width: 80%;margin: auto; margin-top:5%;">
-      <div class="banner" name="about-header">
-      <!-- Insert header information here -->
-      </div>
-      <div style="display: flex;flex-direction: row; margin:auto">
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
-        <div class="card-body">
-          <p class="title">Person1</p>
-          <p>Person1 Title</p>
-          <p class="card-text">Some text that explains the person1 in about 2 short sentences</p>
-          <p>person1@example.com</p>
+<body>
+  <div>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:darkturquoise; height: 1in;">
+      <div class="container-fluid">
+        <h2 style="padding-right: 5%;">Dealerships</h2>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" style="font-size: larger;" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" style="font-size: larger;" href="/about">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="font-size: larger;" href="/contact">Contact Us</a>
+            </li>
+          </ul>
         </div>
       </div>
-
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
-        <div class="card-body">
-          <p class="title">Person2</p>
-          <p>Person2 Title</p>
-          <p class="card-text">Some text that explains the person2 in about 2 short sentences</p>
-          <p>person2@example.com</p>
-        </div>
-      </div>
-
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
-        <div class="card-body">
-          <p class="title">Person3</p>
-          <p>Person3 Title</p>
-          <p class="card-text">Some text that explains the person3 in about 2 short sentences</p>
-          <p>person3@example.com</p>
-        </div>
-      </div>
-    </div>
-    </div>
-    </div>
+    </nav>
     
-</div>
+    <div class="card" style="width: 80%;margin: auto; margin-top:5%; padding: 20px;">
+      <div class="banner" name="about-header">
+        <h1>About Us</h1>
+        <p class="lead">
+          Welcome to Best Cars dealership, home to the best cars in North America. 
+          We deal in selling domestic and imported cars at reasonable prices. Our 
+          mission is to provide a seamless buying experience for every customer.
+        </p>
+      </div>
 
+      <div style="display: flex; flex-direction: row; justify-content: space-around; margin:auto; gap: 10px;">
+        <div class="card" style="width: 30%;">
+          <img class="card-img-top" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400" alt="CEO">
+          <div class="card-body text-center">
+            <h5 class="title">Jamel Hadjirasul</h5>
+            <p class="text-muted">Chief Executive Officer</p>
+            <p class="card-text">Jamel has over 15 years of experience in the automotive industry and oversees all North American operations.</p>
+            <p class="text-primary">jamel@bestcars.com</p>
+          </div>
+        </div>
+
+        <div class="card" style="width: 30%;">
+          <img class="card-img-top" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400" alt="Sales Manager">
+          <div class="card-body text-center">
+            <h5 class="title">Sarah Jenkins</h5>
+            <p class="text-muted">Sales Manager</p>
+            <p class="card-text">Sarah specializes in imported luxury vehicles and ensures every client finds their dream car within budget.</p>
+            <p class="text-primary">sarah.j@bestcars.com</p>
+          </div>
+        </div>
+
+        <div class="card" style="width: 30%;">
+          <img class="card-img-top" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400" alt="Technical Lead">
+          <div class="card-body text-center">
+            <h5 class="title">David Chen</h5>
+            <p class="text-muted">Head of Logistics</p>
+            <p class="card-text">David manages our vast inventory of domestic cars, ensuring high quality and safety standards across the board.</p>
+            <p class="text-primary">d.chen@bestcars.com</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
 </html>
