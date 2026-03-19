@@ -62,32 +62,32 @@ const PostReview = () => {
   }
 
   }
-  const get_dealer = async ()=>{
+  const get_dealer = async () => {
     const res = await fetch(dealer_url, {
       method: "GET"
     });
     const retobj = await res.json();
     
-    if(retobj.status === 200) {
-      let dealerobjs = Array.from(retobj.dealer)
-      if(dealerobjs.length > 0)
-        setDealer(dealerobjs[0])
+    if (retobj.status === 200) {
+      // Logic fix: retobj.dealer is an object, not an array.
+      // Simply set the dealer directly.
+      setDealer(retobj.dealer);
     }
-  }
+  };
 
-  const get_cars = async ()=>{
+  const get_cars = async () => {
     const res = await fetch(carmodels_url, {
       method: "GET"
     });
     const retobj = await res.json();
     
-    let carmodelsarr = Array.from(retobj.CarModels)
-    setCarmodels(carmodelsarr)
+    // Use the key exactly as defined in your Django views.py
+    if (retobj.CarModels) {
+      setCarmodels(retobj.CarModels);
+    } else {
+      console.error("CarModels key not found in response", retobj);
+    }
   }
-  useEffect(() => {
-    get_dealer();
-    get_cars();
-  },[]);
 
 
   return (

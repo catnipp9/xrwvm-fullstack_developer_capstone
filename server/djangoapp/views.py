@@ -4,6 +4,7 @@ from django.http import JsonResponse
 import logging
 import json
 from django.views.decorators.csrf import csrf_exempt
+from .restapis import get_request, analyze_review_sentiments, post_review
 
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
@@ -54,3 +55,59 @@ def registration(request):
         return JsonResponse({"userName": username, "status": "Authenticated"})
     else:
         return JsonResponse({"userName": username, "error": "Already Registered"})
+    
+# Update the get_dealerships view
+def get_dealerships(request, state="All"):
+    if(state == "All"):
+        endpoint = "/fetchDealers"
+    else:
+        endpoint = "/fetchDealers/"+state
+    dealerships = get_request(endpoint)
+    return JsonResponse({"status":200,"dealers":dealerships})
+
+# Add the missing get_dealer_reviews view
+def get_dealer_reviews(request, dealer_id):
+    if(dealer_id):
+        endpoint = "/fetchReviews/dealer/"+str(dealer_id)
+        reviews = get_request(endpoint)
+        for review_detail in reviews:
+            response = analyze_review_sentiments(review_detail['review'])
+            review_detail['sentiment'] = response['sentiment']
+        return JsonResponse({"status":200,"reviews":reviews})
+    else:
+        return JsonResponse({"status":400,"message":"Bad Request"})
+
+# Add the get_dealer_details view (required for the Dealers page)
+def get_dealer_details(request, dealer_id):
+    if(dealer_id):
+        endpoint = "/fetchDealer/"+str(dealer_id)
+        # This calls your restapis.py function
+        dealer_details = get_request(endpoint)
+        return JsonResponse({"status":200,"dealer":dealer_details})
+    else:
+        return JsonResponse({"status":400,"message":"Bad Request"})
+        
+# Add the add_review view
+@csrf_exempt
+def add_review(request):
+    if(request.user.is_authenticated == False):
+        return JsonResponse({"status":403,"message":"Unauthorized"})
+    else:
+        data = json.loads(request.body)
+        try:
+            # This calls the post_review function in restapis.py
+            response = post_review(data)
+            return JsonResponse({"status":200})
+        except:
+            return JsonResponse({"status":401,"message":"Error in posting review"})
+
+def get_cars(request):
+    count = CarMake.objects.filter().count()
+    if(count == 0):
+        initiate() 
+    car_models = CarModel.objects.select_related('car_make')
+    cars = []
+    for car_model in car_models:
+        # Change .push to .append here!
+        cars.append({"CarModel": car_model.name, "CarMake": car_model.car_make.name})
+    return JsonResponse({"CarModels": cars})
