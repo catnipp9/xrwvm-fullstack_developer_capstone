@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('djangoapp/', include('djangoapp.urls')),
     path('', TemplateView.as_view(template_name="Home.html")),
-    # Add the About Us route here
     path('about/', TemplateView.as_view(template_name="About.html")),
+    # Add the Contact route here
+    path('contact/', TemplateView.as_view(template_name="Contact.html")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
